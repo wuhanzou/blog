@@ -1,0 +1,19 @@
+@mixin col-6{
+	width: (500px/2);
+	float: left;
+}
+@mixin col( $width: 50% ){
+	width: $width;
+	float: left;
+}
+@mixin coll{
+	.col-1{
+		width: 50px;
+	}
+}
+@mixin coo ( $width: 50% ){
+	@media(max-width: 768px){
+		width:$width;
+		float:left;
+	}
+}

@@ -1,9 +1,0 @@
-[ 2017-03-31T23:55:03+08:00 ] 127.0.0.1 /
-INFO: [ app_init ] --START--
-INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000636s ]
-INFO: [ app_begin ] --START--
-INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000649s ]
-INFO: [ app_begin ] --END-- [ RunTime:0.000719s ]
-ERR: Call to undefined method Home\Controller\IndexController::display()
-

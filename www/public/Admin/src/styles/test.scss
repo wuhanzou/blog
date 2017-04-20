@@ -1,0 +1,35 @@
+@import "_variables.scss";
+@import "_mixin.scss";
+
+//P漂簽樣式
+p{
+	font-family: $headline-ff;
+	font-size: $da;
+}
+/* span標簽樣式 */
+span{
+	@include col-6;
+	font-family: $main-sec-ff;
+	font-size: $xa;
+	@at-root{
+		p{
+			@include col;
+			font:{
+				family:  $main-sec-ff;
+				color: #ffee55;
+			}
+		}
+		em{
+			font-size: $da;
+		}
+	}		
+}
+a{
+	@include coo;
+	@include col(20%);
+	color: red;
+	&:hover{
+		color: black;
+	}
+}
+@include coll;
