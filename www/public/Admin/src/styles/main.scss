@@ -1,0 +1,121 @@
+@import "_variables.scss";
+@import "_mixin.scss";
+html, body{
+	width: 100%;
+	height: 100%;
+	background-color: #222;
+}
+.content{
+	width: 100%;
+	height: 100%;
+}
+/* stage -- start */
+.state{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+/* stage -- end */
+/* image -- start */
+.img-sec{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #ddd;
+	perspective:1800px;
+	@at-root{
+		.img-figure{
+			width: 320px;
+			height: 360px;
+			margin: 0px;
+			padding: 40px;
+			background-color: #fff;
+			box-sizing: border-box;
+			position: absolute;
+			cursor: pointer;
+			transform-style: preserve-3d;
+		    transform-origin: 0 50% 0;
+		    transition: transform .6s ease-in-out, left .6s ease-in-out, top .6s ease-in-out;
+			&.is-inverse {
+	        	transform: translate(320px) rotateY(180deg);
+	      	}
+		}
+		figcaption{
+			text-align: center;
+			.img-title{
+				margin: 20px 0 0 0;
+				color: #a7a0a2;
+				font-size: 16px;
+			}
+			.img-back {
+	          position: absolute;
+	          top: 0;
+	          left: 0;
+
+	          width: 100%;
+	          height: 100%;
+	          padding: 50px 40px;
+	          overflow: auto;
+
+	          color: #a7a0a2;
+	          font-size: 22px;
+	          line-height: 1.25;
+	          text-align: left;
+
+	          background-color: #fff;
+
+	          box-sizing: border-box;
+	          transform: rotateY(180deg) translateZ(1px);
+	          backface-visibility: hidden;
+
+	          p {
+	            margin: 0;
+	          }
+	        }
+		}
+	}
+}
+.controller-nav{
+	position: absolute;
+	left: 0;
+	bottom: 30px;
+	z-index: 101;
+	width: 100%;
+	text-align: center;
+}
+/* image -- end */
+// //P漂簽樣式
+// p{
+// 	font-family: $headline-ff;
+// 	font-size: $da;
+// }
+// /* span標簽樣式 */
+// span{
+// 	@include col-6;
+// 	font-family: $main-sec-ff;
+// 	font-size: $xa;
+// 	@at-root{
+// 		p{
+// 			transform:rotate(0deg);
+// 			background-image:linear-gradient(to left, orange, green);
+// 			@include col;
+// 			font:{
+// 				family:  $main-sec-ff;
+// 				color: #ffee55;
+// 			}
+// 		}
+// 		em{
+// 			font-size: $da;
+// 		}
+// 	}		
+// }
+// a{
+// 	@include coo;
+// 	@include col(20%);
+// 	color: red;
+// 	&:hover{
+// 		color: black;
+// 	}
+// }
+// @include coll;

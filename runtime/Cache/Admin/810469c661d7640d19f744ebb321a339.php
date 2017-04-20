@@ -9,10 +9,10 @@
   <!-- 頭部文件 -->
 </head>
 <body>
-  <div id="app">APPLICATION CONTENT</div>
+  <div id="app" class="content">APPLICATION CONTENT</div>
 	<!-- 自帶的js -->
   <script>__REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__</script>
-  <script type="text/javascript" src="/assets/App.js"></script>
-  <script type="text/javascript" src="http://www.zblog.cc/public/Admin/dist/assets/bundle-2613d4d91298d7c17961.js"></script></body>
+ <!--  <script type="text/javascript" src="/assets/App.js"></script> -->
+  <script type="text/javascript" src="http://www.zblog.cc/public/Admin/dist/assets/bundle-3bdc8c183ada4d04178b.js"></script></body>
 </body>
 </html>
