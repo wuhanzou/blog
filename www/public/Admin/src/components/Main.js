@@ -29,7 +29,7 @@ function get30DegRandom() {
 }
 let ImgFigure = React.createClass({
     /**
-     * 圖片和小圓點的點擊事件
+     * 圖片的點擊事件
      * @param   e  鼠標事件
      * @return {[type]}   [description]
      */
@@ -52,8 +52,8 @@ let ImgFigure = React.createClass({
       }
       //如果圖片的旋轉角度有值並且不爲0,添加旋轉角度
       if (this.props.arrange.rotate) {
-        ['-moz-', '-ms-', '-webkit-', ''].forEach(function(value) {
-          styleObj[value + 'transform'] = 'rotate(' + this.props.arrange.rotate + 'deg)';
+        ['MozTransform', 'msTransform', 'webkitTransform', 'transform'].forEach(function(value) {
+          styleObj[value] = 'rotate(' + this.props.arrange.rotate + 'deg)';
         }.bind(this))
       }
       if (this.props.arrange.isCenter) { //給居中圖片添加z-index值
@@ -79,9 +79,28 @@ let ImgFigure = React.createClass({
   // let yeomanImage = require('../images/yeoman.png');
   //控制組件(小圓鈕)
 let ControllerUnit = React.createClass({
+    handleClick: function(e) {
+      //如果點幾的是當前正在選中態的控鈕，則翻轉圖片，否則將對應的圖片居中
+      if (this.props.arrange.isCenter) {
+        this.props.inverse();
+      } else {
+        this.props.center();
+      }
+      e.preventDefault();
+      e.stopPropagation();
+    },
     render: function() {
+      let controllerUnitClassName = "controller-unit";
+      //如果對應的是居中的圖片，顯示控制按鈕的居中態
+      if (this.props.arrange.isCenter) {
+        controllerUnitClassName += " is-center";
+        //如果同時對應的是翻轉圖片，顯示控制按鈕的翻轉態
+        if (this.props.arrange.isInverse) {
+          controllerUnitClassName += " is-inverse";
+        }
+      }
       return (
-        <span className="controller-unit" onClick={this.handleClick}></span>
+        <span className={controllerUnitClassName} onClick={this.handleClick}></span>
       )
     }
   })
@@ -135,7 +154,7 @@ let AppComponent = React.createClass({
       vPosRangeTopY = vPosRange.topY,
       vPosRangeX = vPosRange.x,
       imgsArrangeTopArr = [], //存儲上側區域圖片
-      topImgNum = Math.ceil(Math.random() * 2), //取一個或者不取，因爲上側區域可以放置一張圖片或者不放。放多了影響效果
+      topImgNum = Math.floor(Math.random() * 2), //取一個或者不取，因爲上側區域可以放置一張圖片或者不放。放多了影響效果
       topImgSpliceIndex = 0,
       imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1); //從所有狀態圖片位置中獲取一張圖片位置
     //首先居中centerIndex的圖片,居中的centerIndex的圖片不需要旋轉
@@ -265,7 +284,8 @@ let AppComponent = React.createClass({
           isCenter: false
         }
       }
-      imgFigures.push(<ImgFigure data={value} ref={'imgFigure'+index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)} />);
+      imgFigures.push(<ImgFigure key={index} data={value} ref={'imgFigure'+index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)} />);
+      controllerUnits.push(<ControllerUnit key={index} arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)} />);
     }.bind(this));
     return (
       <section className="state" ref="state">

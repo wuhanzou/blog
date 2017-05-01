@@ -13,6 +13,6 @@
 	<!-- 自帶的js -->
   <script>__REACT_DEVTOOLS_GLOBAL_HOOK__ = parent.__REACT_DEVTOOLS_GLOBAL_HOOK__</script>
  <!--  <script type="text/javascript" src="/assets/App.js"></script> -->
-  <script type="text/javascript" src="http://www.zblog.cc/public/Admin/dist/assets/bundle-3bdc8c183ada4d04178b.js"></script></body>
+  <script type="text/javascript" src="http://www.zblog.cc/public/Admin/dist/assets/bundle-396257b99714ecbc5b08.js"></script></body>
 </body>
 </html>

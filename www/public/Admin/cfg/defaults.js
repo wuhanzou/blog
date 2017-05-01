@@ -40,7 +40,7 @@ function getDefaultModules() {
       test: /\.styl/,
       loader: 'style-loader!css-loader!stylus-loader'
     }, {
-      test: /\.(jpe?g|gif|svg|woff|woff2)$/i,
+      test: /\.(jpe?g|gif|svg|woff|woff2|eot|ttf)$/i,
       // loader: 'url-loader',
       // query: {
       //   limit: 2,                     //這個參數意思，如果處理的圖片或文件超過這裏指定的大小。就使用url地址引用。如果小於這個值，就把它轉成base64的編碼進行加載
@@ -48,13 +48,13 @@ function getDefaultModules() {
       // }
       //以數組的形式加載多個loaders
       loaders: [
-        'url-loader?limit=1024&name=[name]-[hash:5].[ext]',
+        'url-loader?limit=1024&name=images/[name]-[hash:5].[ext]',
         // 'image-webpack', //image-webpack壓縮模塊。注意，這個壓縮模塊只適合壓縮png圖片。壓縮其它圖片會報錯。由於webpack的執行順序是從右往左。所以是先壓縮再判斷大小的
       ]
     }, {
       test: /\.png$/i, //本來這個png配置應該是和上面放在一起的。但是因爲下面的image-webpack壓縮模塊，只能壓縮png圖片。其它壓縮爲報錯，然後又嘗試了其它方法，同時壓縮png/jpg圖片的方法，但是都報錯了。後來想想。有其它工具/方法是可以壓縮圖片的，所以沒有必要在這裏糾結。可以把圖片在其它位置壓縮後再上傳也可以
       loaders: [
-        'url-loader?limit=1024&name=[name]-[hash:5].[ext]',
+        'url-loader?limit=1024&name=images/[name]-[hash:5].[ext]',
         'image-webpack', //image-webpack壓縮模塊。注意，這個壓縮模塊只適合壓縮png圖片。壓縮其它圖片會報錯。由於webpack的執行順序是從右往左。所以是先壓縮再判斷大小的
       ]
     }, {
@@ -64,7 +64,7 @@ function getDefaultModules() {
       test: /\.ts?$/,
       loader: 'ts-loader'
     }, {
-      test: /\.json$/,
+      test: /\.json$/, //加載json文件
       loader: 'json-loader'
     }]
   };
